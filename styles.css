@@ -1,0 +1,203 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #365788;
+  color: hsl(0, 0%, 18%);
+}
+
+header {
+  background-color: #213049;
+  color: #ffffff;
+padding: 1.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 20px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+header img {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 130px !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.nav-btn {
+  background-color: #334155;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  background-color: #2563eb;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+ 
+}
+
+.seccion {
+  display: none;
+}
+
+.seccion.active {
+  display: block;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #fbfbfc;
+}
+
+.card-form {
+  background: hsl(216, 90%, 73%);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  max-width: 1000px; /* Ancho máximo estandarizado */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #7a9dc7;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+textarea {
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #1858d8;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.tabla-container {
+  background: #c7d3f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  overflow-x: auto;
+  max-width: 1000px; /* Ancho máximo estandarizado */
+  width: 100%;
+  margin: 0 190px 30px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* Permite que las celdas se ajusten al contenido */
+}
+
+th, td {
+  padding: 0.8rem 0.6rem; /* Reducimos un poquito el relleno lateral para ganar espacio */
+  text-align: left;
+  border-bottom: 1px solid #909cac;
+  word-break: break-word; /* Evita que los textos largos estiren la celda de más */
+}
+
+th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: #bcd4ec;
+}
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  flex: 1; 
+}
+
+
+footer {
+  background-color: #213049;
+  color: #d1d5db;
+  text-align: left;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 -30px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+#sec-servicios table th:last-child,
+#sec-servicios table td:last-child {
+  white-space: nowrap; /* Evita que los botones se amontonen uno debajo de otro */
+  width: 160px;        /* Da un ancho fijo y cómodo a la columna de acciones */
+}

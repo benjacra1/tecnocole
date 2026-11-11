@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Servicio Técnico</title>
+  <link rel="stylesheet" href="styles.css">
+
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <img src="logoepet-removebg-preview (1).png" alt="Logo" class="logo-jpg">
+      <h1>Sistema de Servicio Técnico</h1>
+    </div>
+    <nav>
+      <button class="nav-btn active" onclick="cambiarPestana('clientes')">Clientes</button>
+      <button class="nav-btn" onclick="cambiarPestana('equipos')">Equipos</button>
+      <button class="nav-btn" onclick="cambiarPestana('servicios')">Servicios</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- clientes -->
+    <section id="sec-clientes" class="seccion active">
+      <h2>Gestión de Clientes</h2>
+      <form id="form-cliente" class="card-form">
+        <div class="grid-form">
+          <input type="text" id="cli-nombre" placeholder="Nombre *" required>
+          <input type="text" id="cli-apellido" placeholder="Apellido *" required>
+          <input type="text" id="cli-dni" placeholder="DNI *" required>
+          <input type="text" id="cli-telefono" placeholder="Teléfono *" required>
+          <input type="email" id="cli-email" placeholder="Email (opcional)">
+          <input type="text" id="cli-direccion" placeholder="Dirección (opcional)">
+        </div>
+        <button type="submit" class="btn-primary">Guardar Cliente</button>
+      </form>
+
+      <div class="tabla-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Teléfono</th>
+              <th>Email</th>
+              <th>Dirección</th>
+              <th>DNI</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-clientes"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- equipos -->
+    <section id="sec-equipos" class="seccion">
+      <h2>Gestión de Equipos</h2>
+      <form id="form-equipo" class="card-form">
+        <div class="grid-form">
+          <select id="eq-clienteid" required>
+            <option value="">Seleccionar Cliente *</option>
+          </select>
+          <input type="text" id="eq-tipo" placeholder="Tipo (ej: Notebook, PC) *" required>
+          <input type="text" id="eq-marca" placeholder="Marca *" required>
+          <input type="text" id="eq-modelo" placeholder="Modelo *" required>
+          <input type="text" id="eq-nro-serie" placeholder="N° Serie (opcional)">
+          <input type="text" id="eq-accesorios" placeholder="Accesorios (opcional)">
+        </div>
+        <textarea id="eq-otros-detalles" placeholder="Diagnóstico inicial (opcional)" rows="2"></textarea>
+        <button type="submit" class="btn-primary">Guardar Equipo</button>
+      </form>
+
+      <div class="tabla-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Cliente ID</th>
+              <th>Tipo</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>N° Serie</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-equipos"></tbody>
+        </table>
+      </div>
+    </section>
+     <!-- servicios -->
+    <section id="sec-servicios" class="seccion">
+      <h2>Gestión de Servicios</h2>
+      <form id="form-servicio" class="card-form">
+        <div class="grid-form">
+          <select id="srv-equipoid" required>
+            <option value="">Seleccionar Equipo *</option>
+          </select>
+          <input type="date" id="srv-fecha" required>
+          
+          <select id="srv-estado" required>
+            <option value="" disabled selected>Seleccione Estado...</option>
+            <option value="Entrega">Entrega</option>
+          </select>
+
+          <input type="number" id="srv-costo" placeholder="Costo ($)" step="0.01">
+        </div>
+        <textarea id="srv-descripcion" placeholder="Descripcion de la solucion *" rows="3" required></textarea>
+        
+       
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+          <button type="submit" class="btn-primary">Registrar Servicio</button>
+        
+        </div>
+      </form>
+
+      <div class="tabla-container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>N° Servicio</th>
+        <th>Equipo ID</th>
+        <th>Fecha Retiro</th>
+        <th>Estado</th>
+        <th>Costo</th>
+        <th>Diagnóstico</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-servicios">
+  
+    </tbody>
+  </table>
+</div>
+    </section>
+
+  </main>
+
+  <script>
+    function cambiarPestana(pestana) {
+      document.querySelectorAll('.seccion').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('sec-' + pestana).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
+  <!--SDK de Supabase + app.js  -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+
+  <footer>
+    <div class="footer-info">
+      <p><strong>Escuela Provincial de Educación Técnica N° 1</strong></p>
+      <p>Av. Juan Domingo Perón N° 1117 - C.P. 5300</p>
+      <p>La Rioja, Provincia de La Rioja, Argentina</p>
+      <p>Teléfonos: (0380) 442-8885 | Email: epet1larioja@gmail.com</p>
+    </div>
+  </footer>
+</body>
+</html>
