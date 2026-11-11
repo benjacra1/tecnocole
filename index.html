@@ -12,18 +12,30 @@
 </head>
 <body>
 
-  <header>
+ <header>
     <div class="header-content">
-      <img src="logoepet-removebg-preview (1).png" alt="Logo" class="logo-jpg">
-      <h1>Sistema de Servicio Técnico</h1>
+      <!-- Izquierda: Logo de la escuela -->
+      <div class="header-logo-izq">
+        <img src="logoepet-removebg-preview (1).png" alt="Logo EPET" class="logo-jpg">
+      </div>
+
+      <!-- Centro: Título solito -->
+      <div class="header-centro">
+        <h1>Sistema de Servicio Técnico</h1>
+      </div>
+
+      <!-- Derecha: El otro logo -->
+      <div class="header-logo-der">
+        <img src="image-removebg-preview.png" alt="Segundo Logo" class="logo-der">
+      </div>
     </div>
+    
     <nav>
       <button class="nav-btn active" onclick="cambiarPestana('clientes')">Clientes</button>
       <button class="nav-btn" onclick="cambiarPestana('equipos')">Equipos</button>
       <button class="nav-btn" onclick="cambiarPestana('servicios')">Servicios</button>
     </nav>
   </header>
-
   <main class="container">
 
     <!-- clientes -->
